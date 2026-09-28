@@ -1,0 +1,62 @@
+	looksDerish = function()
+														local ReplicatedStorage2 = game:GetService("ReplicatedStorage")
+														local remoteFunction = ReplicatedStorage2:FindFirstChild("RemoteFunction")
+														if remoteFunction and remoteFunction:FindFirstChild("RemoteFunction") then
+															return true
+														end
+														local mainRemotes = ReplicatedStorage2:FindFirstChild("MainRemotes")
+														mainRemotes = mainRemotes and mainRemotes:FindFirstChild("InvokeServer")
+														if mainRemotes and mainRemotes:IsA("RemoteFunction") then
+															return v83[53]
+														end
+														return v83[113]
+													end,
+													hasZeeRemotes = function()
+														local ReplicatedStorage2 = game:GetService("ReplicatedStorage")
+
+														local function fn39(arg, arg2)
+															local v87 = ReplicatedStorage2:FindFirstChild(arg)
+															v87 = v87 and v87:FindFirstChild(arg2)
+															return v87 and v87:IsA("RemoteEvent") and v87 or nil
+														end
+
+														if fn39("GameRemotes", "MainGameEvent") then
+															return true
+														end
+
+														if fn39("MainRemotes", "MainRemoteEvent") and not fusion.looksDerish() then
+															return true
+														end
+														return false
+													end,
+													hasHcRemotes = function()
+														local ReplicatedStorage2 = game:GetService("ReplicatedStorage")
+														local mainFunction = ReplicatedStorage2:FindFirstChild("MainFunction")
+														if not (mainFunction and mainFunction:IsA("RemoteFunction")) then
+															return false
+														end
+														local v87 = ReplicatedStorage2:FindFirstChild(v83[112])
+														if v87 and not v87:IsA(v83[180]) then
+															return v83[113]
+														end
+														return true
+													end,
+													hasDerRemotes = function()
+														local ReplicatedStorage2 = game:GetService("ReplicatedStorage")
+														local v87 = ReplicatedStorage2:FindFirstChild(v83[171])
+														v87 = v87 and v87:FindFirstChild(v83[171])
+														local isA = v87 ~= nil and v87:IsA(v83[171])
+														local mainRemotes = ReplicatedStorage2:FindFirstChild("MainRemotes")
+														local mainRemoteEvent = mainRemotes and mainRemotes:FindFirstChild("MainRemoteEvent")
+														local isRemoteEvent = mainRemoteEvent ~= nil and mainRemoteEvent:IsA("RemoteEvent")
+														mainRemotes = mainRemotes and mainRemotes:FindFirstChild("InvokeServer")
+														local isA2 = mainRemotes ~= nil and mainRemotes:IsA(v83[171])
+														return isA and (isRemoteEvent or isA2)
+													end,
+													hasDhRemotes = function()
+														if fusion.hasHcRemotes() then
+															return false
+														end
+														local mainEvent = game:GetService("ReplicatedStorage"):FindFirstChild("MainEvent")
+														return mainEvent ~= nil and mainEvent:IsA("RemoteEvent")
+													end,
